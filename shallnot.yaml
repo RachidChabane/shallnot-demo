@@ -1,0 +1,8 @@
+version: 1
+id_pattern: 'PWD-[0-9]+'
+specs:
+  - specs
+tests:
+  - tests
+results:
+  - junit.xml
