@@ -6,3 +6,5 @@ tests:
   - tests
 results:
   - junit.xml
+test_commands:
+  - python3 -m pytest -q --junitxml=junit.xml

@@ -16,10 +16,22 @@ The [Actions history](../../actions) shows both verdicts: the run of the first
 commit is blocked because `PWD-2~1` has no test, and the run of the commit
 that adds the test and the behaviour passes.
 
+## An agent uses it without being asked
+
+The repository is equipped by `shallnot init`: [`AGENTS.md`](AGENTS.md) and a
+project skill tell a coding agent the convention, and an end-of-turn hook in
+[`.claude/settings.json`](.claude/settings.json) holds the agent's turn until
+the gate passes. Ask an agent for a feature that a requirement describes, and
+it tags the tests it writes and runs the gate on its own:
+
+![A Claude Code session: asked only to reject passwords containing the username, the agent tags its tests with PWD-2~1 and runs the shallnot gate](media/session.gif)
+
 ## Run it locally
 
 ```sh
 python -m pip install pytest
-python -m pytest --junitxml=junit.xml
-shallnot check
+shallnot gate
 ```
+
+`shallnot gate` runs the test command of [`shallnot.yaml`](shallnot.yaml),
+then checks the results it wrote.
