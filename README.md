@@ -24,7 +24,14 @@ project skill tell a coding agent the convention, and an end-of-turn hook in
 the gate passes. Ask an agent for a feature that a requirement describes, and
 it tags the tests it writes and runs the gate on its own:
 
-![A Claude Code session: asked only to reject passwords containing the username, the agent tags its tests with PWD-2~1 and runs the shallnot gate](media/session.gif)
+![An agent reports its feature done with all tests passing; shallnot holds the end of its turn because requirement PWD-2~1 has no bound test; the agent fixes its tags and the gate passes](media/catch.gif)
+
+That session runs with the hook alone, without the agent instructions: the
+agent does not know about shallnot, reports green tests, and is sent back
+until a passing test cites the requirement. With the instructions installed,
+the agent does it unprompted:
+
+![A Claude Code session: asked only for a digit rule, the agent writes requirement PWD-4~1, implements it, tags its tests and runs the shallnot gate](media/session.gif)
 
 ## Run it locally
 
